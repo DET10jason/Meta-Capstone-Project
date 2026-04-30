@@ -38,7 +38,7 @@ function Footer() {
         </div>
       </section>
       
-      <div>
+      <div className="footer-copyright">
         <p>© 2024 Little Lemon Restaurant</p>
       </div>
     </footer>

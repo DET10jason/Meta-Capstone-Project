@@ -6,12 +6,15 @@ import './App.css';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Nav />
+    <div className="app-container">
+      {/* This combined wrapper puts them on the same level */}
+      <header className="top-bar">
+        <Header />
+        <Nav />
+      </header>
       <Main />
       <Footer />
-    </>
+    </div>
   );
 }
 
