@@ -10,6 +10,18 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [email, setEmail] = useState(""); // Email
   const [occasion, setOccasion] = useState("Birthday");
 
+  // The form is "valid" only if these conditions are met
+  const getIsFormValid = () => {
+    return (
+      fullName.length >= 2 &&
+      date !== "" &&
+      resTime !== "" &&
+      guests >= 1 &&
+      email.includes("@") &&
+      phone.length >= 10
+    );
+  };
+
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     setDate(selectedDate);
@@ -37,7 +49,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         placeholder="Jane Doe"
         value={fullName} 
         onChange={(e) => setFullName(e.target.value)} 
-        required 
+        required minLength="2" maxLength="50"
       />
 
       {/* 2. Date */}
@@ -71,7 +83,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         placeholder="123-456-7890"
         value={phone} 
         onChange={(e) => setPhone(e.target.value)} 
-        required 
+        required minLength="10"
       />
 
       {/* 6. Email (Validation active) */}
@@ -82,7 +94,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
         placeholder="example@mail.com"
         value={email} 
         onChange={(e) => setEmail(e.target.value)} 
-        required 
+        required
       />
 
       {/* 7. Occasion */}
